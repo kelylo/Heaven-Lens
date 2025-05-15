@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heaven's Lens - Support Spiritual Breakthroughs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #5D3FD3;
+            --secondary: #4169E1;
+            --accent: #FFD700;
+            --light: #F8F9FA;
+            --dark: #0f2027;
+            --text-light: rgba(255,255,255,0.9);
+            --text-soft: rgba(255,255,255,0.7);
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-light);
+            line-height: 1.7;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--text-soft);
+            margin-top: 15px;
+        }
+        
+        .scripture {
+            font-style: italic;
+            color: var(--accent);
+            margin: 20px 0;
+            font-size: 1.2rem;
+        }
+        
+        .content-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            font-size: 2.2rem;
+            margin-top: 0;
+        }
+        
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 30px;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            min-width: 220px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(45deg, #FFA500, #FFD700);
+            color: #1A1A2E;
+        }
+        
+        .btn-tertiary {
+            background: linear-gradient(45deg, #ff0000, #cc0000);
+        }
+        
+        .btn i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* Popup Messages */
+        .popup-message {
+            position: fixed;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px 35px;
+            border-radius: 50px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            max-width: 450px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            z-index: 1000;
+            font-weight: 600;
+            font-size: 1.2rem;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.05); }
+            100% { transform: translateX(-50%) scale(1); }
+        }
+        
+        .popup-message.show {
+            opacity: 1;
+        }
+        
+        /* Testimonials */
+        .testimonials-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .testimonial {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: all 0.8s ease-in-out;
+            min-height: 180px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        
+        .testimonial.show {
+            opacity: 1;
+        }
+        
+        .testimonial .name {
+            font-weight: 600;
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .testimonial .amount {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial .comment {
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+        
+        /* Testimonial color variations */
+        .testimonial.color1 {
+            background: linear-gradient(45deg, rgba(106, 17, 203, 0.7), rgba(37, 117, 252, 0.7));
+        }
+        
+        .testimonial.color2 {
+            background: linear-gradient(45deg, rgba(236, 72, 153, 0.7), rgba(239, 68, 68, 0.7));
+        }
+        
+        .testimonial.color3 {
+            background: linear-gradient(45deg, rgba(5, 150, 105, 0.7), rgba(16, 185, 129, 0.7));
+        }
+        
+        .testimonial.color4 {
+            background: linear-gradient(45deg, rgba(109, 40, 217, 0.7), rgba(124, 58, 237, 0.7));
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            margin-top: 40px;
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--accent);
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .contact-form textarea {
+            min-height: 120px;
+        }
+        
+        .contact-form button {
+            border: none;
+            cursor: pointer;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        footer p {
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .popup-message {
+                bottom: 100px;
+                max-width: 90%;
+                padding: 18px 25px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Heaven's Lens Ministry</h1>
+            <p class="tagline">Your support helps bring spiritual breakthroughs to millions, spread untold Truth over millions of souls</p>
+            <div class="scripture">" Jesus said:
+🔹Give, and it will be given to you... For with the measure you use, it will be measured to you." - Luke 6:38
+
+🔹His master said to him, 'Well done, good and faithful servant. You have been faithful over a little; I will set you over much. Enter into the joy of your master.'  Mathew 25:21
+
+🔹Do not lay up for yourselves treasures on earth, where moth and rust destroy and where thieves break in and steal, but lay up for yourselves treasures in heaven, where neither moth nor rust destroys and where thieves do not break in and steal. Matthew 6:19-20
+</div>
+        </header>
+        
+        <div class="content-box">
+            <h2>Partner With Us</h2>
+            <p>Every seed you sow helps us create content that:</p>
+            <ul>
+                <li>Exposes hidden spiritual attacks</li>
+                <li>Reveals breakthrough prayer strategies</li>
+                <li>Delivers believers from generational curses</li>
+                <li>Equips the body of Christ with discernment</li>
+            </ul>
+            
+            <div class="btn-group">
+                <a href="https://www.paypal.com/ncp/payment/JEHUTPJNRPZP8" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-paypal"></i> Donate via PayPal
+                </a>
+                <a href="https://buymeacoffee.com/iservejesus" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-coffee"></i> Buy Me Coffee
+                </a>
+                <a href="https://youtube.com/@heaven-lens?si=SqdpDZ5gN0s23qmU" class="btn btn-tertiary" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-youtube"></i> Return to YouTube
+                </a>
+            </div>
+        </div>
+        
+        <div class="content-box">
+            <h2>What Faithful Partners Are Saying</h2>
+            <div class="testimonials-container">
+                <div class="testimonial" id="testimonial1"></div>
+                <div class="testimonial" id="testimonial2"></div>
+            </div>
+        </div>
+        
+        <div class="content-box">
+            <h2>Send Us a Message</h2>
+            <form class="contact-form" action="https://getform.io/f/bmdkvkka" method="POST" target="_blank">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+                
+                <button type="submit" class="btn btn-primary" style="width: auto; padding: 15px 40px;">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+            </form>
+        </div>
+        
+        <div class="popup-message" id="popupMessage"></div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Heaven's Lens Ministry. All donations support spiritual warfare content creation.</p>
+        <p>Malachi 3:10 - "Test me in this," says the Lord Almighty</p>
+    </footer>
+    
+    <script>
+        // Random names for donations
+        const names = [
+            "Alex", "Kevin", "David", "Mr. Conrad", "Dr. Peterson", "Jordan", "Taylor", "Morgan", "Casey", "Riley", "Jamie", "Dylan", 
+            "Avery", "Peyton", "Quinn", "Blake", "Hayden", "Addison", "Cameron", 
+            "Emma", "Liam", "Olivia", "Noah", "Ava", "William", "Sophia", "James", 
+            "Isabella", "Benjamin", "Mia", "Lucas", "Charlotte", "Henry", "Amelia",
+            "Ethan", "Harper", "Alexander", "Evelyn", "Michael", "Abigail", "Daniel",
+            "Emily", "Matthew", "Elizabeth", "Jackson", "Mila", "Sebastian", "Ella",
+            "David", "Avery", "Joseph", "Scarlett", "Samuel", "Victoria", "Gabriel",
+            "Madison", "Carter", "Luna", "Jayden", "Grace", "John", "Chloe", "Luke",
+            "Penelope", "Anthony", "Layla", "Isaac", "Riley", "Dylan", "Zoey", "Leo",
+            "Nora", "Julian", "Lily", "Christopher", "Eleanor", "Joshua", "Hannah",
+            "Andrew", "Lillian", "Lincoln", "Addison", "Mateo", "Aubrey", "Ryan",
+            "Ellie", "Jaxon", "Stella", "Nathan", "Natalie", "Aaron", "Zoe", "Isaiah",
+            "Leah", "Thomas", "Hazel", "Charles", "Violet", "Caleb", "Aurora", "Josiah",
+            "Savannah", "Christian", "Audrey", "Hunter", "Brooklyn", "Eli", "Bella",
+            "Jonathan", "Claire", "Connor", "Skylar", "Dominic", "Lucy", "Austin",
+            "Michael", "Sarah", "David", "Emily", "John", "Rebecca", "Matthew", "Hannah", 
+            "Daniel", "Grace", "James", "Abigail", "Joshua", "Chloe", "Andrew", "Rachel", 
+            "Joseph", "Naomi", "Samuel", "Faith", "Jonathan", "Lydia", "Ethan", "Mary", 
+            "Caleb", "Anna", "Benjamin", "Elizabeth", "Nathan", "Leah", "Luke", "Esther", 
+            "Aaron", "Julia", "Isaac", "Deborah", "Elijah", "Ruth", "Noah", "Hope", 
+            "Zachary", "Miriam", "Logan", "Charity", "Gabriel", "Joanna", "Christian", 
+            "Phoebe", "Jacob", "Selah"
+        ];
+        
+        // Random action words
+        const actions = ["donated", "sowed", "gave", "contributed", "shared", "supported", "blessed", 
+                        "sent", "offered", "planted", "invested", "poured", "served", "sacrificed", 
+                        "trusted", "tithed", "committed", "partnered", "responded", "obeyed", "submitted", 
+                        "backed", "supplied", "honored", "released", "seeded", "transferred", "yielded", 
+                        "presented", "built", "provided", "empowered", "enriched", "nurtured", "covered"];
+        
+        // Emojis
+        const emojis = ["❤️", "🙏", "✨", "🎉", "💫", "🌟", "🔥", "💖", "🥰", "😊", "👍", "👏", "😍", "❤️‍🩹", "🙌", "🤝"];
+        
+        // Testimonial comments
+        const comments = [
+            "This ministry changed my life! Happy to support.",
+            "After donating to this ministry, I received a $500 blessing!",
+            "Your prayers broke a 10-year curse in my family.",
+            "I learned spiritual warfare from your channel. Thank you!",
+            "My business tripled after supporting this work.",
+            "Your deliverance prayers set me free. Worth every penny!",
+            "God answered my prayer within 24 hours of giving.",
+            "This is the most anointed content online. I give monthly.",
+            "Your teaching exposed witchcraft in my home. Forever grateful.",
+            "I received healing after supporting your ministry.",
+            "I donated last month and that same week, I got the breakthrough I'd been praying for. God is real!", 
+            "Your content helped me get out of a dark place spiritually. Giving back was the least I could do.", 
+            "After sowing into this ministry, peace returned to my home. I'm speechless.", 
+            "I sent a small donation and got a new job three days later. I know it's connected.", 
+            "This channel changed my prayer life. I donated so others can experience the same freedom.", 
+            "I finally understood grace through your video. Supporting this is a must.", 
+            "Just a few dollars, but I felt led. Days later, my son's health began to improve.", 
+            "I was spiritually dry. Now I'm alive again. I gave back because this is holy ground.", 
+            "I've never felt God so close before. Thank you. I donated so others can find Him too.", 
+            "Sowed in faith last month—this week I got my first apartment!", 
+            "Your video found me at my lowest. I gave back because it literally saved me.", 
+            "This isn't just content—it's deliverance. Glad I gave.", 
+            "Giving was scary, but God provided double. I'll keep sowing.", 
+            "I learned to forgive through your message. I had to help spread it.", 
+            "The moment I gave, I felt a release. Like chains fell.", 
+            "Supporting this channel was an act of obedience. I've been blessed since.", 
+            "My anxiety left. My joy returned. I had to give back.", 
+            "For the first time in years, I heard God again. Worth every cent.", 
+            "I was skeptical, but giving here changed everything. I stand by this ministry.", 
+            "You unlocked something in me. I want others to find what I found."
+        ];
+        
+        // Testimonial color classes
+        const testimonialColors = ['color1', 'color2', 'color3', 'color4'];
+        
+        // Get DOM elements
+        const popupMessage = document.getElementById('popupMessage');
+        const testimonial1 = document.getElementById('testimonial1');
+        const testimonial2 = document.getElementById('testimonial2');
+        
+        // Function to generate random donation message
+        function generateDonationMessage() {
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            const randomAmount = (Math.random() * 100).toFixed(2);
+            const randomAction = actions[Math.floor(Math.random() * actions.length)];
+            const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            return `${randomName} ${randomAction} $${randomAmount} ${randomEmoji}`;
+        }
+        
+        // Function to generate random testimonial
+        function generateTestimonial() {
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            const randomAmount = (5 + Math.random() * 100).toFixed(2);
+            const randomComment = comments[Math.floor(Math.random() * comments.length)];
+            const randomColor = testimonialColors[Math.floor(Math.random() * testimonialColors.length)];
+            
+            return {
+                html: `
+                    <div class="name">${randomName}</div>
+                    <div class="amount">$${randomAmount}</div>
+                    <div class="comment">"${randomComment}"</div>
+                `,
+                color: randomColor
+            };
+        }
+        
+        // Show popup message
+        function showPopupMessage() {
+            popupMessage.textContent = generateDonationMessage();
+            popupMessage.classList.add('show');
+            
+            setTimeout(() => {
+                popupMessage.classList.remove('show');
+            }, 12000);
+        }
+        
+        // Show testimonials
+        function showTestimonials() {
+            testimonial1.classList.remove(...testimonialColors);
+            testimonial2.classList.remove(...testimonialColors);
+           
