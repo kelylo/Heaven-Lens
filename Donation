@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -495,4 +495,41 @@
         function showTestimonials() {
             testimonial1.classList.remove(...testimonialColors);
             testimonial2.classList.remove(...testimonialColors);
-           
+            
+            const testimonial1Data = generateTestimonial();
+            const testimonial2Data = generateTestimonial();
+            
+            testimonial1.innerHTML = testimonial1Data.html;
+            testimonial2.innerHTML = testimonial2Data.html;
+            
+            testimonial1.classList.add(testimonial1Data.color);
+            testimonial2.classList.add(testimonial2Data.color);
+            
+            testimonial1.classList.add('show');
+            testimonial2.classList.add('show');
+            
+            setTimeout(() => {
+                testimonial1.classList.remove('show');
+                testimonial2.classList.remove('show');
+            }, 9000);
+        }
+        
+        // Initial setup
+        window.addEventListener('DOMContentLoaded', () => {
+            popupMessage.style.display = 'block';
+            testimonial1.style.display = 'block';
+            testimonial2.style.display = 'block';
+            
+            // Show first messages immediately
+            setTimeout(() => {
+                showPopupMessage();
+                showTestimonials();
+            }, 500);
+            
+            // Start intervals
+            setInterval(showPopupMessage, 15000);
+            setInterval(showTestimonials, 10000);
+        });
+    </script>
+</body>
+</html>
